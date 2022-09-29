@@ -13,17 +13,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.ic_image::before {
-  content:"\f03e";
-  font: var(--fa-font-solid);
-  font-size : 1rem;
-  margin-right: 5px;
-}
-.ic_fileLines::before {
-  content:"\f15c";
-  font: var(--fa-font-solid);
-  font-size : 1rem;
-  margin-right: 5px;
-}
+
 
 </style>
