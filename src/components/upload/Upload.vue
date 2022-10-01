@@ -3,7 +3,7 @@
     <h3 class="bl_upload_title">얼굴 사진과 닮은 꼴 유명인을 찾아드립니다</h3>
     <h4 class="bl_upload_subTitle">용량 2MB 미만의 이미지를 업로드 하세요!</h4>
     <div class="bl_upload_imgBtn">
-      <img class="bl_upload_img" src="https://placeimg.com/250/300/any/grayscale" width="250" height="300" alt="">
+      <img class="bl_upload_img" src="src/assets/images/blank-profile-picture-gee2347716_640.png" width="250" height="250" alt="">
       <div class="ly_btnTwoColumn">
         <a class="el_btn ic_image" href="#">업로드</a>
         <a class="el_btn ic_search" href="#">찾기</a>.
