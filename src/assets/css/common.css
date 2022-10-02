@@ -1,5 +1,6 @@
 .ly_cont {
   padding-top: 20px;
+  padding-bottom: 8em;
 }
 .ly_contInner {
   position:relative;
@@ -86,4 +87,16 @@
   font: var(--fa-font-solid);
   font-size : 1rem;
   margin-right: 5px;
+}
+.bl_footer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 8em;
+  display:block;
+  position:fixed;
+  bottom:0;
+  background-color: #222;
+  color:#fff;
+  font-size:.75rem;
+  padding:1em 3em;
 }
