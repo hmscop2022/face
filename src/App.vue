@@ -4,7 +4,9 @@
       <div class="ly_contInner">
         <Header></Header>
         <Navigation></Navigation>
-        <Upload></Upload>
+        <router-view ></router-view>
+        <!-- <Upload></Upload>
+        <Analysis></Analysis> -->
       </div>
     </div>
     <Footer></Footer>
@@ -16,6 +18,7 @@ import Header from './components/common/Header.vue'
 import Navigation from './components/common/Navigation.vue'
 import Upload from './components/upload/Upload.vue'
 import Footer from './components/common/Footer.vue'
+import Analysis from './components/analysis/Analysis.vue'
 
 export default {
   name: 'app',
@@ -29,6 +32,7 @@ export default {
     'Navigation':Navigation,
     'Upload': Upload,
     'Footer': Footer,
+    'Analysis':Analysis,
   }
 }
 </script>
