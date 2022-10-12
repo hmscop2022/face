@@ -48,7 +48,14 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    proxy:{
+      '/api':{
+        target:'https://openapi.naver.com',
+        pathRewrite:{"^/api":"/"},
+        changeOrigin:true,
+      }
+    }
   },
   performance: {
     hints: false
