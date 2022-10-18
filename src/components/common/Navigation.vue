@@ -23,7 +23,6 @@ export default {
     storeGetTabname(){
       return this.$store.getters.getTabname
     },
-
   },
   methods: {
     onChangeTabname(tabname){

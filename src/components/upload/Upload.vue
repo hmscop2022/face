@@ -3,7 +3,7 @@
     <h3 class="bl_upload_title">얼굴 사진과 닮은 꼴 유명인을 찾아드립니다</h3>
     <h4 class="bl_upload_subTitle">용량 2MB 미만의 이미지를 업로드 하세요!</h4>
     <div class="bl_upload_imgBtn">
-      <img class="bl_upload_img" v-bind:src="imageBaseData" width="250" height="250" alt="">
+      <img class="bl_upload_img" v-bind:src="storeGetUploadImageData" width="250" height="250" alt="">
       <div class="ly_btnTwoColumn">
         <a class="el_btn ic_image" href="#" v-on:click="imageSelect">업로드</a>
         <a class="el_btn ic_search" href="#" v-on:click="onGetAxiosTest">찾기</a>.
@@ -16,10 +16,14 @@
 <script>
 import axios from 'axios'
 export default {
+  computed: {
+    storeGetUploadImageData(){
+      return this.$store.getters.getUploadImageData
+    },
+  },
   data () {
     return {
       image:'',
-      imageBaseData:'src/assets/images/blank-profile-picture-gee2347716_640.png',
     }
   },
   methods: {
@@ -80,7 +84,7 @@ export default {
 
                 context.drawImage(img, 0, 0, width, height);
                 imageData = canvas.toDataURL('image/jpeg');
-                this.imageBaseData = imageData;
+                this.$store.dispatch('callChangeValue',{uploadImageData: imageData, celebName:'',percentage:0,age:0,emotion:'',gender:''});
                 imageData.replace('data:image/jpeg;base64,', '');
 
                 let blobToFile = vm.dataURItoBlob(imageData);
@@ -104,12 +108,20 @@ export default {
       }
       axios.post('/api/v1/vision/celebrity',formData, config)
         .then(res => {
-          console.log(res);
           var celeb = res.data.faces[0].celebrity.value
           var percentage = Math.round(res.data.faces[0].celebrity.confidence*100)+'%';
-          console.log(celeb);
-          console.log(percentage);
-          alert(`닮은꼴:${celeb} (${percentage})`);
+          this.$store.dispatch('callChangeValue',{celebName: celeb, percentage});
+        })
+        .catch(res=>{
+
+        })
+        .finally(()=>{
+
+        })
+      axios.post('/api/v1/vision/face',formData, config)
+        .then(res => {
+          const {age, emotion, gender} = res.data.faces[0];
+          this.$store.dispatch('callChangeValue',{age:age.value, emotion:emotion.value, gender:gender.value});
         })
         .catch(res=>{
 
